@@ -1,15 +1,14 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using HealthChecks.UI.Client;
+using DocBot.Startups;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace DocBot.Api;
+namespace DocBot;
 
 public class Startup {
     private readonly IConfiguration configuration;
@@ -32,7 +31,9 @@ public class Startup {
             });
 
         services
-            .ConfigureActions(configuration);
+            .ConfigureActions(configuration)
+            .ConfigureSwagger()
+            .ConfigureVersioning();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
@@ -43,7 +44,12 @@ public class Startup {
         app
             .UseMiddleware<ExceptionMiddleware>()
             .UseOpenApi()
-            .UseSwaggerUi()
+            .UseSwagger()
+            .UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                options.RoutePrefix = "swagger";
+            })
             .UseRouting()
             .UseEndpoints(endpoints => {
                 endpoints

@@ -1,4 +1,4 @@
-﻿namespace DocBot.Api;
+﻿namespace DocBot;
 
 
 public class CreateChatCommandHandler {

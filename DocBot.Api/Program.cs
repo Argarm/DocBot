@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
-namespace DocBot.Api {
+namespace DocBot {
     public class Program {
         private static string DummyConnectionString = "DummyConnectionString";
         private const string Development = "Development";

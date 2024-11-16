@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace DocBot.Api;
+namespace DocBot;
 
 
 public class ExceptionMiddleware {
