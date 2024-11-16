@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-
-namespace DocBot {
+﻿namespace DocBot {
     public class Program {
         private static string DummyConnectionString = "DummyConnectionString";
         private const string Development = "Development";
