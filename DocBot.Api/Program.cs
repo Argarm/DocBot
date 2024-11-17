@@ -10,7 +10,8 @@
                     webBuilder.ConfigureAppConfiguration((context, configurationBuilder) => {
                         configurationBuilder.SetBasePath(context.HostingEnvironment.ContentRootPath)
                             .AddJsonFile("appsettings.json", true, true)
-                            .AddJsonFile("environment.json", true);
+                            .AddJsonFile("environment.json", true)
+                            .AddEnvironmentVariables();
                     }).UseStartup<Startup>();
                 }).Build();
             host.Run();

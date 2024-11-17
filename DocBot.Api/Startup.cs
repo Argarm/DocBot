@@ -31,7 +31,7 @@ public class Startup {
             });
 
         services
-            .ConfigureActions()
+            .ConfigureActions(configuration)
             .ConfigureSwagger()
             .ConfigureVersioning();
     }
