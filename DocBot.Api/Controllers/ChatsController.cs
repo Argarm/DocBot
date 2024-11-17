@@ -13,9 +13,15 @@ public class ChatsController : ControllerBase {
         this.mediator = mediator;
     }
     
-    [HttpPost("{chatName}")]
-    public async Task<ActionResult<ChatResponse>> Post(string chatName) {
-        var result = await mediator.Send(new CreateChatCommand{chatName = chatName});
+    [HttpPost("/chat")]
+    public async Task<ActionResult<ChatResponse>> Post() {
+        var result = await mediator.Send(new CreateChatCommand());
+        return Ok(result.Guid);
+    }
+    
+    [HttpGet("{chatId}")]
+    public async Task<ActionResult<ChatResponse>> Get(string chatId) {
+        var result = await mediator.Send(new GetChatQuery(chatId));
         return Ok(result);
     }
 }

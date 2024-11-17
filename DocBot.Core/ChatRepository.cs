@@ -7,7 +7,7 @@ public class ChatRepository {
     }
 
     public Chat Get(Guid chatId) {
-        chats.FirstOrDefault(chat => chat.Guid.Equals(chatId));
+        chats.FirstOrDefault(chat => chat.Id.Equals(chatId));
         return new Chat();
     }
 }

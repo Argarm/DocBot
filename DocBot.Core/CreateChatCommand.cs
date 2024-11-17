@@ -12,6 +12,6 @@ public class CreateChatCommandHandler : IRequestHandler<CreateChatCommand, ChatR
     public async Task<ChatResponse> Handle(CreateChatCommand request, CancellationToken cancellationToken) {
         var chat = new Chat();
         chatRepository.Update(chat);
-        return new ChatResponse{Guid = chat.Guid.ToString()};
+        return new ChatResponse{Guid = chat.Id.ToString()};
     }
 }

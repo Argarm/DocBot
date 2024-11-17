@@ -1,5 +1,5 @@
 ﻿namespace DocBot.Core;
 
 public class Chat {
-    public Guid Guid { get; set; } = Guid.NewGuid();
+    public Guid Id { get; set; } = Guid.NewGuid();
 }
