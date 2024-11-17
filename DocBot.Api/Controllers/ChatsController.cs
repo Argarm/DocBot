@@ -14,8 +14,8 @@ public class ChatsController : ControllerBase {
     }
     
     [HttpPost("{chatName}")]
-    public async Task<ActionResult> Post(string chatName) {
+    public async Task<ActionResult<ChatResponse>> Post(string chatName) {
         var result = await mediator.Send(new CreateChatCommand{chatName = chatName});
-        return Ok();
+        return Ok(result);
     }
 }

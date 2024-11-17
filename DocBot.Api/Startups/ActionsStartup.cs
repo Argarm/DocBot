@@ -8,7 +8,7 @@ namespace DocBot.Startups;
 public static class ActionsStartup {
     public static IServiceCollection ConfigureActions(this IServiceCollection services) {
         services.AddMediatR(meditorConfiguration =>
-            meditorConfiguration.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+            meditorConfiguration.RegisterServicesFromAssemblies(typeof(ChatResponse).Assembly));
         services.AddScoped<CreateChatCommand>();
         services.AddScoped<CreateChatCommandHandler>();
         return services;
